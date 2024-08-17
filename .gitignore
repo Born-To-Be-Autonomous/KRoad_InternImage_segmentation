@@ -1,0 +1,12 @@
+
+.idea/
+.DS_Store
+__pycache__/
+classification/convertor/
+segmentation/convertor/
+checkpoint_dir/
+demo/
+data/
+work_dirs/
+configs/kroad
+configs/kroad_augmented
