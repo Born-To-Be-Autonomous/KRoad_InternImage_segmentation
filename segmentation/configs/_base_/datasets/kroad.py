@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'KroadDataset'
-data_root = 'data/kroad/'    # 경로 수정
+data_root = 'data/kroad/'
 
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
