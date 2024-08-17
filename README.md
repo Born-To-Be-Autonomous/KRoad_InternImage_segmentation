@@ -1,5 +1,5 @@
 # KRoad
-[![KRoad AI competition](/pngs/banner.png)](https://challenge.gcontest.co.kr/template/m/16335)
+[![KRoad AI competition](/pngs/banner.jpg)](https://challenge.gcontest.co.kr/template/m/16335)
 
 ## Content
 1. [Data Preprocessing](Data-Preprocessing)
