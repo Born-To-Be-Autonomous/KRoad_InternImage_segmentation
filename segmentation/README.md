@@ -1,4 +1,4 @@
-# Kroad 2D Semantic Segmentation with InternImage
+# KRoad 2D Semantic Segmentation with InternImage
 
 This folder contains the implementation of the InternImage for semantic segmentation. 
 
