@@ -8,5 +8,5 @@ checkpoint_dir/
 demo/
 data/
 work_dirs/
-configs/kroad
-configs/kroad_augmented
+configs/kroad/
+configs/kroad_augmented/
