@@ -1,5 +1,7 @@
 # KRoad
+2024년 7월 26일 ~ 2024년 8월 19일
 [![KRoad AI competition](/pngs/banner.jpg)](https://challenge.gcontest.co.kr/template/m/16335)
+
 
 ## Content
 1. [Data Preprocessing](Data-Preprocessing)
