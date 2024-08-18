@@ -77,16 +77,16 @@ sh dist_test.sh <config-file> <checkpoint> <gpu-num> --eval mIoU
 ```
 You can download checkpoint files from [here](https://huggingface.co/OpenGVLab/InternImage/tree/fc1e4e7e01c3e7a39a3875bdebb6577a7256ff91). Then place it to segmentation/checkpoint_dir/seg.
 
-For example, to evaluate the `InternImage-T` with a single GPU:
+For example, to evaluate the `InternImage-B` with a single GPU:
 
 ```bash
-python test.py configs/kroad/upernet_internimage_t_512_160k_cityscapes2kroad.py checkpoint_dir/seg/upernet_internimage_t_512_160k_cityscapes2kroad.pth --eval mIoU
+python test.py configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py checkpoint_dir/seg/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth --eval mIoU
 ```
 
 For example, to evaluate the `InternImage-B` with a single node with 8 GPUs:
 
 ```bash
-sh dist_test.sh configs/ade20k/upernet_internimage_b_512_160k_cityscapes2kroad.py checkpoint_dir/seg/upernet_internimage_b_512_160k_cityscapes2kroad.pth 8 --eval mIoU
+sh dist_test.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py checkpoint_dir/seg/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth 8 --eval mIoU
 ```
 
 ### Training
@@ -97,18 +97,18 @@ To train an `InternImage` on KRoad dataset, run:
 sh dist_train.sh <config-file> <gpu-num>
 ```
 
-For example, to train `InternImage-T` with 8 GPU on 1 node (total batch size 16), run:
+For example, to train `InternImage-B` with 8 GPU on 1 node (total batch size 16), run:
 
 ```bash
-sh dist_train.sh configs/ade20k/upernet_internimage_t_512_160k_ade20k.py 8
+sh dist_train.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py 8
 ```
 
 ### Manage Jobs with Slurm
 
-For example, to train `InternImage-XL` with 8 GPU on 1 node (total batch size 16), run:
+For example, to train `InternImage-B` with 8 GPU on 1 node (total batch size 16), run:
 
 ```bash
-GPUS=8 sh slurm_train.sh <partition> <job-name> configs/ade20k/upernet_internimage_xl_640_160k_ade20k.py
+GPUS=8 sh slurm_train.sh <partition> <job-name> configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py
 ```
 
 ### Image Demo
@@ -116,10 +116,10 @@ To inference a single/multiple image like this.
 If you specify image containing directory instead of a single image, it will process all the images in the directory.:
 ```
 CUDA_VISIBLE_DEVICES=0 python image_demo.py \
-  data/ade/ADEChallengeData2016/images/validation/ADE_val_00000591.jpg \
-  configs/ade20k/upernet_internimage_t_512_160k_ade20k.py  \
-  checkpoint_dir/seg/upernet_internimage_t_512_160k_ade20k.pth  \
-  --palette ade20k 
+  data/kroad/images/validation/E_DCG_230829_141_FC_080.jpg \
+  configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py  \
+  checkpoint_dir/seg/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth  \
+  --palette kroad 
 ```
 
 ### Export
@@ -131,7 +131,7 @@ CKPT_PATH="/path/to/model/ckpt.pth"
 
 python deploy.py \
     "./deploy/configs/mmseg/segmentation_tensorrt_static-512x512.py" \
-    "./configs/ade20k/${MODEL}.py" \
+    "./configs/kroad/${MODEL}.py" \
     "${CKPT_PATH}" \
     "./deploy/demo.png" \
     --work-dir "./work_dirs/mmseg/${MODEL}" \
@@ -139,10 +139,10 @@ python deploy.py \
     --dump-info
 ```
 
-For example, to export `upernet_internimage_t_512_160k_ade20k` from PyTorch to TensorRT, run:
+For example, to export `upernet_internimage_b_512x1024_160k_cityscapes2kroad` from PyTorch to TensorRT, run:
 ```shell
-MODEL="upernet_internimage_t_512_160k_ade20k"
-CKPT_PATH="/path/to/model/ckpt/upernet_internimage_t_512_160k_ade20k.pth"
+MODEL="upernet_internimage_b_512x1024_160k_cityscapes2kroad"
+CKPT_PATH="/path/to/model/ckpt/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth"
 
 python deploy.py \
     "./deploy/configs/mmseg/segmentation_tensorrt_static-512x512.py" \
