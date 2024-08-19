@@ -52,7 +52,7 @@ pip install timm==0.6.11 mmdet==2.28.1
 
 - Compile CUDA operators
 ```bash
-cd ./segmentation/ops_dcnv3
+cd ./ops_dcnv3
 ./make.sh
 # unit test (should see all checking is True)
 python test.py
