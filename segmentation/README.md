@@ -53,7 +53,7 @@ pip install timm==0.6.11 mmdet==2.28.1
 - Compile CUDA operators
 ```bash
 cd ./ops_dcnv3
-sh ./make.sh
+./make.sh
 # unit test (should see all checking is True)
 python test.py
 ```
@@ -73,7 +73,7 @@ Prepare datasets according to the [guidelines](https://github.com/open-mmlab/mms
 To evaluate our `InternImage` on validation dataset, run:
 
 ```bash
-sh dist_test.sh <config-file> <checkpoint> <gpu-num> --eval mIoU
+./dist_test.sh <config-file> <checkpoint> <gpu-num> --eval mIoU
 ```
 You can download checkpoint files from [here](https://huggingface.co/OpenGVLab/InternImage/tree/fc1e4e7e01c3e7a39a3875bdebb6577a7256ff91). Then place it to segmentation/checkpoint_dir/seg.
 
@@ -86,7 +86,7 @@ python test.py configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroa
 For example, to evaluate the `InternImage-B` with a single node with 8 GPUs:
 
 ```bash
-sh dist_test.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py checkpoint_dir/seg/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth 8 --eval mIoU
+./dist_test.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py checkpoint_dir/seg/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth 8 --eval mIoU
 ```
 
 ### Training
@@ -94,13 +94,13 @@ sh dist_test.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kro
 To train an `InternImage` on KRoad dataset, run:
 
 ```bash
-sh dist_train.sh <config-file> <gpu-num>
+./dist_train.sh <config-file> <gpu-num>
 ```
 
 For example, to train `InternImage-B` with 8 GPU on 1 node (total batch size 16), run:
 
 ```bash
-sh dist_train.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py 8
+./dist_train.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py 8
 ```
 
 ### Manage Jobs with Slurm
@@ -108,7 +108,7 @@ sh dist_train.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kr
 For example, to train `InternImage-B` with 8 GPU on 1 node (total batch size 16), run:
 
 ```bash
-GPUS=8 sh slurm_train.sh <partition> <job-name> configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py
+GPUS=8 ./slurm_train.sh <partition> <job-name> configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py
 ```
 
 ### Image Demo
