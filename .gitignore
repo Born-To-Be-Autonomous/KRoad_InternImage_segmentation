@@ -4,6 +4,7 @@
 __pycache__/
 classification/convertor/
 segmentation/convertor/
-checkpoints/
+# checkpoints/
 demo/
+data/
 work_dirs/

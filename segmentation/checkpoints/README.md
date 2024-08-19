@@ -1,0 +1,1 @@
+You should put checkpoint files in this directory.

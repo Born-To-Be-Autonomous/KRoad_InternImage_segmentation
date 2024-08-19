@@ -1,1 +1,1 @@
-You should symbolic file linked to dataset here.
+You should symbolic file linked to dataset in this directory.
