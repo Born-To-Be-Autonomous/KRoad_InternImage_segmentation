@@ -80,13 +80,13 @@ You can download checkpoint files from [here](https://huggingface.co/OpenGVLab/I
 For example, to evaluate the `InternImage-B` with a single GPU:
 
 ```bash
-python test.py configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py checkpoint_dir/seg/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth --eval mIoU
+python test.py configs/kroad/upernet_internimage_b_512x1024_320k_city2kroad.py checkpoints/best.pth --eval mIoU
 ```
 
 For example, to evaluate the `InternImage-B` with a single node with 8 GPUs:
 
 ```bash
-./dist_test.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py checkpoint_dir/seg/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth 8 --eval mIoU
+./dist_test.sh configs/kroad/upernet_internimage_b_512x1024_320k_city2kroad.py checkpoints/best.pth 8 --eval mIoU
 ```
 
 ### Training
@@ -100,7 +100,7 @@ To train an `InternImage` on KRoad dataset, run:
 For example, to train `InternImage-B` with 8 GPU on 1 node (total batch size 16), run:
 
 ```bash
-./dist_train.sh configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py 8
+./dist_train.sh configs/kroad/upernet_internimage_b_512x1024_320k_city2kroad.py 8
 ```
 
 ### Manage Jobs with Slurm
@@ -108,7 +108,7 @@ For example, to train `InternImage-B` with 8 GPU on 1 node (total batch size 16)
 For example, to train `InternImage-B` with 8 GPU on 1 node (total batch size 16), run:
 
 ```bash
-GPUS=8 ./slurm_train.sh <partition> <job-name> configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py
+GPUS=8 ./slurm_train.sh <partition> <job-name> configs/kroad/upernet_internimage_b_512x1024_320k_city2kroad.py
 ```
 
 ### Image Demo
@@ -117,8 +117,8 @@ If you specify image containing directory instead of a single image, it will pro
 ```
 CUDA_VISIBLE_DEVICES=0 python image_demo.py \
   data/kroad/images/validation/E_DCG_230829_141_FC_080.jpg \
-  configs/kroad/upernet_internimage_b_512x1024_160k_cityscapes2kroad.py  \
-  checkpoint_dir/seg/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth  \
+  configs/kroad/upernet_internimage_b_512x1024_160k_city2kroad.py  \
+  checkpoints/best.pth  \
   --palette kroad 
 ```
 
@@ -139,10 +139,10 @@ python deploy.py \
     --dump-info
 ```
 
-For example, to export `upernet_internimage_b_512x1024_160k_cityscapes2kroad` from PyTorch to TensorRT, run:
+For example, to export `upernet_internimage_b_512x1024_320k_cityscapes2kroad` from PyTorch to TensorRT, run:
 ```shell
 MODEL="upernet_internimage_b_512x1024_160k_cityscapes2kroad"
-CKPT_PATH="/path/to/model/ckpt/upernet_internimage_b_512x1024_160k_cityscapes2kroad.pth"
+CKPT_PATH="/path/to/model/ckpt/upernet_internimage_b_512x1024_320k_cityscapes2kroad.pth"
 
 python deploy.py \
     "./deploy/configs/mmseg/segmentation_tensorrt_static-512x512.py" \
