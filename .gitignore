@@ -6,5 +6,4 @@ classification/convertor/
 segmentation/convertor/
 checkpoints/
 demo/
-data/
 work_dirs/
