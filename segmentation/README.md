@@ -12,7 +12,7 @@ Our segmentation code is developed on top of [MMSegmentation v0.27.0](https://gi
 
 ```bash
 git clone https://github.com/Born-To-Be-Autonomous/KRoad_InternImage_segmentation.git
-cd KRoad_InternImage_segmentation
+cd KRoad_InternImage_segmentation/segmentation
 ```
 
 - Create a conda virtual environment and activate it:
